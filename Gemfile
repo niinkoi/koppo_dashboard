@@ -46,3 +46,9 @@ group :development do
   # gem "spring"
 end
 
+
+gem "rspec", "~> 3.11"
+
+gem "jwt", "~> 2.3"
+
+gem "bcrypt", "~> 3.1"
