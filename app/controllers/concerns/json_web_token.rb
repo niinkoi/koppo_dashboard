@@ -15,8 +15,7 @@ module JsonWebToken
 
     decoded = JWT.decode(token, SECRET_KEY)[0]
     HashWithIndifferentAccess.new decoded
-
   rescue ArgumentError
-    { errors: I18n.t("session.error_messages.unauthorized") }
+    { errors: I18n.t('session.error_messages.unauthorized') }
   end
 end

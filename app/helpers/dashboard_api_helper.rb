@@ -1,6 +1,6 @@
 module DashboardApiHelper
   def remove_nil_params(hash)
-    hash.reject { |_, v| v.nil? }
+    hash.compact
   end
 
   def required_params(params, *expected_params)

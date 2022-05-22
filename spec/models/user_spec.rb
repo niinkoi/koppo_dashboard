@@ -13,7 +13,7 @@ RSpec.describe 'User', type: :model do
       it 'is invalid if first name is blank or nil' do
         user = build(:user)
 
-        user.first_name = ""
+        user.first_name = ''
         expect(user).to be_invalid
 
         user.first_name = nil
@@ -23,7 +23,7 @@ RSpec.describe 'User', type: :model do
       it 'is invalid if last name is blank or nil' do
         user = build(:user)
 
-        user.last_name = ""
+        user.last_name = ''
         expect(user).to be_invalid
 
         user.last_name = nil
@@ -33,7 +33,7 @@ RSpec.describe 'User', type: :model do
       it 'is invalid if username is blank or nil' do
         user = build(:user)
 
-        user.username = ""
+        user.username = ''
         expect(user).to be_invalid
 
         user.username = nil
@@ -57,7 +57,7 @@ RSpec.describe 'User', type: :model do
       it 'is valid if email is blank or nil' do
         user = build(:user)
 
-        user.email = ""
+        user.email = ''
         expect(user).to be_invalid
 
         user.email = nil
@@ -65,22 +65,22 @@ RSpec.describe 'User', type: :model do
       end
 
       it 'is invalid if the email looks bogus' do
-        user.email = ""
+        user.email = ''
         expect(user).to be_invalid
 
-        user.email = "foo.bar"
+        user.email = 'foo.bar'
         expect(user).to be_invalid
 
-        user.email = "foo.bar#example.com"
+        user.email = 'foo.bar#example.com'
         expect(user).to be_invalid
 
-        user.email = "f.o.o.b.a.r@example.com"
+        user.email = 'f.o.o.b.a.r@example.com'
         expect(user).to be_valid
 
-        user.email = "foo+bar@example.com"
+        user.email = 'foo+bar@example.com'
         expect(user).to be_valid
 
-        user.email = "foo.bar@sub.example.co.id"
+        user.email = 'foo.bar@sub.example.co.id'
         expect(user).to be_valid
       end
 

@@ -6,14 +6,13 @@ class ApplicationController < ActionController::API
   private
 
   def authenticate_request
-    header = request.headers["Authorization"]
-    header = header.split(" ").last if header
+    header = request.headers['Authorization']
+    header = header.split.last if header
     decoded = jwt_decode header
 
     raise ArgumentError, decoded[:errors] if decoded[:errors]
 
     @current_user = User.find(decoded[:user_id])
-
   rescue ArgumentError => e
     render json: { errors: e.message }, status: 400
   end

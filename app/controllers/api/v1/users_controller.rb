@@ -4,13 +4,13 @@ module Api
       include DashboardApiHelper
 
       skip_before_action :authenticate_request
-      before_action :set_user, only: %i[ show update destroy ]
+      before_action :set_user, only: %i[show update destroy]
 
-      REQUIRED_PARAMS = %i(first_name last_name username email password).freeze
+      REQUIRED_PARAMS = %i[first_name last_name username email password].freeze
 
       # GET /users
       def index
-        @users = select_without_columns(%w(password_digest))
+        @users = select_without_columns(%w[password_digest])
         render json: @users
       end
 
@@ -34,6 +34,7 @@ module Api
       end
 
       private
+
       # Use callbacks to share common setup or constraints between actions.
       def set_user
         @user = User.find(params[:id])

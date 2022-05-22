@@ -26,11 +26,11 @@ guard 'livereload' do
     png: :png,
     gif: :gif,
     jpg: :jpg,
-    jpeg: :jpeg,
+    jpeg: :jpeg
     # less: :less, # uncomment if you want LESS stylesheets done in browser
   }
 
-  rails_view_exts = %w(erb haml slim)
+  rails_view_exts = %w[erb haml slim]
 
   # file types LiveReload may optimize refresh for
   compiled_exts = extensions.values.uniq
@@ -63,11 +63,11 @@ guard 'zeus' do
   rspec.spec_helper = "#{rspec.spec_dir}/spec_helper.rb"
 
   # matchers
-  rspec.spec_files = /^#{rspec.spec_dir}\/.+_spec\.rb$/
+  rspec.spec_files = %r{^#{rspec.spec_dir}/.+_spec\.rb$}
 
   # Ruby apps
   ruby = OpenStruct.new
-  ruby.lib_files = /^(lib\/.+)\.rb$/
+  ruby.lib_files = %r{^(lib/.+)\.rb$}
 
   watch(rspec.spec_files)
   watch(rspec.spec_helper) { rspec.spec_dir }
@@ -75,8 +75,8 @@ guard 'zeus' do
 
   # Rails example
   rails = OpenStruct.new
-  rails.app_files = /^app\/(.+)\.rb$/
-  rails.views_n_layouts = /^app\/(.+(?:\.erb|\.haml|\.slim))$/
+  rails.app_files = %r{^app/(.+)\.rb$}
+  rails.views_n_layouts = %r{^app/(.+(?:\.erb|\.haml|\.slim))$}
   rails.controllers = %r{^app/controllers/(.+)_controller\.rb$}
 
   watch(rails.app_files) { |m| rspec.spec.call(m[1]) }
