@@ -30,4 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  session:
+    error_messages:
+      unauthorized: 'You are not authorized.'
+      existed_account: 'This account has been declared in our system. Please try again.'
