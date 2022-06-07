@@ -1,7 +1,6 @@
 module Api
   module V1
     class SessionController < ApplicationController
-      include KoppoDashboard
       include DashboardApiHelper
       skip_before_action :authenticate_request
 

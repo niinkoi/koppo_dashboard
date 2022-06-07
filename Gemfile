@@ -40,7 +40,6 @@ group :development, :test do
   gem 'guard-livereload'
   gem 'pry'
   gem 'pry-byebug'
-  gem 'pry-nav'
   gem 'rspec-rails', require: true
 end
 

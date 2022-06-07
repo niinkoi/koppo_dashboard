@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'User', type: :model do
-  describe '#save' do
+  describe '#create' do
     context 'when attributes are valid' do
       it 'create user successfully' do
         user = create(:user)

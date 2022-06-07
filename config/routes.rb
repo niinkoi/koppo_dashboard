@@ -4,7 +4,9 @@
 Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
-      resources :users
+      namespace 'admin' do
+        resources :users
+      end
       post '/auth/login', to: 'session#new_session'
       post '/auth/sign_up', to: 'session#create_session'
     end
