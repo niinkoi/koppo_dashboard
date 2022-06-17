@@ -12,7 +12,7 @@ module Api
 
         if @user&.authenticate(result[:password])
           expire_at = Time.now.to_i + 120
-          token = jwt_encode({ user_id: @user.id }, expire_at)
+          token = jwt_encode(generated_payload(@user), expire_at)
           render json: { token: token, expiration: expire_at }, status: :ok
         else
           render_error(401, I18n.t('session.error_messages.unauthorized'))
@@ -36,6 +36,15 @@ module Api
       def user_params
         values = required_params(params, *REQUIRED_PARAMS)
         params.permit(*values)
+      end
+
+      def generated_payload(user, exp = Time.now.to_i)
+        {
+          email: user.email,
+          username: user.username,
+          name: [user.first_name, user.last_name].join(' '),
+          exp: exp
+        }
       end
     end
   end
