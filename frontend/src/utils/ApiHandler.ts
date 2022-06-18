@@ -1,7 +1,7 @@
-import LocalStorageUtils from "./LocalStorageUtils";
-import axios from "axios";
+import LocalStorageUtils from './LocalStorageUtils'
+import axios from 'axios'
 
-export const APP_API_URL = "http://localhost:3001/api/v1/"
+export const APP_API_URL = 'http://localhost:3001/api/v1/'
 
 export const getHeaders = () => {
     return {
@@ -14,7 +14,7 @@ export const request = (endpoint, method, headers = {}, params = {}, body = {}) 
     return axios({
         url: APP_API_URL + endpoint,
         method: method,
-        headers:getHeaders(),
+        headers: getHeaders(),
         params: params,
         data: body,
     })

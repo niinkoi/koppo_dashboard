@@ -1,11 +1,11 @@
 import React from 'react'
 
-function PrivateRoute({children} : any) {
-    const accessToken = true;
-    const loading = false;
+function PrivateRoute({ children }: any) {
+    const accessToken = true
+    const loading = false
 
     if (accessToken) {
-        return children;
+        return children
     } else if (loading) {
         return <p>Loading...</p>
     } else if (!accessToken && !loading) {
