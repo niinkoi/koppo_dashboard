@@ -63,4 +63,6 @@ jobs:
         run: |
           cd frontend
           npm i --force
+          npm i --global tslint --force
+          npm link tslint --force
           npm run lint

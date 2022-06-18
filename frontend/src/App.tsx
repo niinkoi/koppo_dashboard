@@ -1,12 +1,12 @@
-import React from 'react';
-import Login from './pages/sessions/Login';
+import React from 'react'
+import Login from './pages/sessions/Login'
 
 const App: React.FC = () => {
     return (
         <div className="App">
-            <Login/>
+            <Login />
         </div>
-    );
+    )
 }
 
-export default App;
+export default App
