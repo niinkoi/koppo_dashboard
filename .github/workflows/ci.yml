@@ -66,3 +66,11 @@ jobs:
           npm i --global tslint --force
           npm link tslint --force
           npm run lint
+      - name: Test Backend
+        run: |
+          gem install rspec
+          gem install bundler -v $(tail -n1 Gemfile.lock)
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3 --path vendor/bundle
+          chmod u+x bin/rails
+          rspec
