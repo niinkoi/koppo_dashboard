@@ -66,3 +66,14 @@ jobs:
           npm i --global tslint --force
           npm link tslint --force
           npm run lint
+      - name: Test Backend
+        run: |
+          bundle install --deployment
+          chmod u+x bin/rails
+          bin/rails db:drop
+          bin/rails db:create
+          bin/rails db:environment:set RAILS_ENV=test
+          bin/rails db:reset
+          bin/rails tmp:clear
+          bin/rails spec:controllers
+          bin/rails spec:models

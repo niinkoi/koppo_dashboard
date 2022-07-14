@@ -78,6 +78,7 @@ RSpec.describe User, type: :model do
       end
 
       it 'is invalid if the email looks bogus' do
+        user = create(:user)
         user.email = ''
         expect(user).to be_invalid
 
