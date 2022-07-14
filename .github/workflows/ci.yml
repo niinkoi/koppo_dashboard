@@ -70,10 +70,10 @@ jobs:
         run: |
           bundle install --deployment
           chmod u+x bin/rails
-          rails db:drop
-          rails db:create
-          rails db:environment:set RAILS_ENV=test
-          rails db:reset
-          rails tmp:clear
-          rails spec:controllers
-          rails spec:models
+          bin/rails db:drop
+          bin/rails db:create
+          bin/rails db:environment:set RAILS_ENV=test
+          bin/rails db:reset
+          bin/rails tmp:clear
+          bin/rails spec:controllers
+          bin/rails spec:models
