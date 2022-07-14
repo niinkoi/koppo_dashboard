@@ -68,9 +68,12 @@ jobs:
           npm run lint
       - name: Test Backend
         run: |
-          gem install rspec
-          gem install bundler -v $(tail -n1 Gemfile.lock)
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3 --path vendor/bundle
+          bundle install --deployment
           chmod u+x bin/rails
-          rspec
+          rails db:drop
+          rails db:create
+          rails db:environment:set RAILS_ENV=test
+          rails db:reset
+          rails tmp:clear
+          rails spec:controllers
+          rails spec:models
