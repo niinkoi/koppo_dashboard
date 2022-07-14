@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_19_082015) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_21_101004) do
+  create_table "location_details", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "location_city"
+    t.string "location_district"
+    t.string "location_ward"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "storefronts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "storefront_code"
+    t.string "storefront_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "location_detail_id", null: false
+    t.index ["location_detail_id"], name: "index_storefronts_on_location_detail_id"
+    t.index ["storefront_code"], name: "index_storefront_on_storefront_code", unique: true
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -21,4 +39,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_082015) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "storefronts", "location_details"
 end
